@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.background{
+    background-color: #F6E9DF ;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    background-color: #0B2434;
+    width: 50%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    
+}
+.main-inner{
+    background-color : #F5F5F5;
+    width: 92%;
+    height: 90%;
+    border: 1px solid;
+    border-radius: 2%;
+}
