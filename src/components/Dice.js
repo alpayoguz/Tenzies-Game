@@ -2,7 +2,7 @@ import React from 'react'
 
 function Dice(props) {
   return (
-    <div className="die-face">
+    <div onClick={()=>{props.flipDice(props.id)}} className={`dice-face ${props.isHeld && "green"}`}>
       <h2>{props.value}</h2>
     </div>
   )
