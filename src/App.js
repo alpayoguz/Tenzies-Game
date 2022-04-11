@@ -4,19 +4,21 @@ import Dice from "./components/Dice"
 
 
 function App() {
+  const [diceArray, setDiceArray] = useState(()=> randomDiceArray())
 
   function randomDiceArray(){
     const diceArray = []
     for(let i =0;i < 10; i++){
       const singleDice = Math.floor(Math.random() * 6) + 1
-      diceArray.push(singleDice);
+      const diceObject = {value:singleDice, isHeld:false}
+      diceArray.push(diceObject);
     }
     return diceArray
   }
 
-  const [diceArray, setDiceArray] = useState(()=> randomDiceArray())
 
-  const diceComponents = diceArray.map(dice=> <Dice value ={dice}/>)
+
+  const diceComponents = diceArray.map(dice=> <Dice value ={dice.value}/>)
 
   return (
 <div class="container">
@@ -24,6 +26,7 @@ function App() {
                 <div className="dice-container">
                    {diceComponents}
                 </div>
+                <button className='btn-roll' onClick={()=>{setDiceArray(()=>randomDiceArray())}}>Roll</button>
           </main>
 </div>
   )
