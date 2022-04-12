@@ -7,14 +7,25 @@ import { nanoid } from 'nanoid';
 function App() {
   const [diceArray, setDiceArray] = useState(()=> randomDiceArray())
 
+  
+  function generateDice(){
+    return {key:nanoid() ,value:Math.floor(Math.random() * 6) + 1, isHeld:false}
+  }
+
+
   function randomDiceArray(){
     const diceArray = []
     for(let i =0;i < 10; i++){
-      const singleDice = Math.floor(Math.random() * 6) + 1
-      const diceObject = {key:nanoid() ,value:singleDice, isHeld:false}
+      const diceObject = generateDice();
       diceArray.push(diceObject);
     }
     return diceArray
+  }
+
+  function rollDice(){
+    setDiceArray(dices=> dices.map(dice=>{
+       return dice.isHeld ? dice : generateDice()
+    }))
   }
 
 
@@ -31,7 +42,7 @@ function flipDice(id){
                 <div className="dice-container">
                    {diceComponents}
                 </div>
-                <button className='btn-roll' onClick={()=>{setDiceArray(()=>randomDiceArray())}}>Roll</button>
+                <button className='btn-roll' onClick={()=>{rollDice()}}>Roll</button>
           </main>
 </div>
   )
